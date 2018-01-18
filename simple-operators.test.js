@@ -1,9 +1,8 @@
 function addStuffUp(arg1) {
-
+  return arg1;
 };
 
-
 it('should allow arguments', () => {
-  addStuffUp(123);
-  expect(arg1).toEqual(123);
+  const addStuffUpFunc = addStuffUp(123);
+  expect(addStuffUpFunc).toEqual(123);
 });
