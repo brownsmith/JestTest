@@ -2,11 +2,16 @@
 // yarn test in JestTest
 
 function addStuffUp(arg1, arg2, arg3) {
-  const args = arguments;
-  if (args.length > 3) {
+  if (arguments.length > 3) {
     return false;
   }
-  return ((args[0] === undefined ? 0 : args[0]) + (args[1] === undefined ? 0 : args[1]) + (args[2] === undefined ? 0 : args[2]));
+
+  var total = 0;
+  for (arg in arguments) {
+    num = parseFloat(arguments[arg]);
+    total += num; 
+  } 
+  return total;
 };
 
 it('should allow arguments', () => {
