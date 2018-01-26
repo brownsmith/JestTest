@@ -46,5 +46,6 @@ it('negative numbers will throw an exception \'negatives not allowed\' and the n
 });
 
 it('should ignore a number greater than 1000, so 2 + 1002 = 2', () => {
-
+  const addStuffUpFunc = addStuffUp(2, 1002);
+  expect(addStuffUpFunc).toEqual(2);
 });
