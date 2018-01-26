@@ -1,6 +1,3 @@
-// http://osherove.com/tdd-kata-1/
-// yarn test in JestTest
-
 function addStuffUp(arg1, arg2, arg3) {
   if (arguments.length > 3) {
     return false;
@@ -9,8 +6,8 @@ function addStuffUp(arg1, arg2, arg3) {
   var total = 0;
   for (arg in arguments) {
     num = parseFloat(arguments[arg]);
-    total += num; 
-  } 
+    total += num;
+  }
   return total;
 };
 
@@ -34,4 +31,13 @@ it('should be called with no more than 3 arguments', () => {
   expect(addStuffUpFunc).toEqual(false);
 });
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments - if args are numbers
+it('should be able to handle an unknown number of numbers', () => {
+  const addStuffUpFunc = addStuffUp(1, 2, 3, 5, 8, 13, 21);
+  expect(addStuffUpFunc).toEqual(false);
+});
+
+it('negative numbers will throw an exception \'negatives not allowed\' and the negative that was passed' , () => {
+  expect(() => {
+    addStuffUp(1, -2, 3);
+  }).toThrow('negatives not allowed -2');
+});
