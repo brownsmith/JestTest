@@ -6,6 +6,9 @@ function addStuffUp(arg1, arg2, arg3) {
   var total = 0;
   for (arg in arguments) {
     num = parseFloat(arguments[arg]);
+    if (num < 0) {
+      throw 'negatives not allowed ' + num;
+    }
     total += num;
   }
   return total;
