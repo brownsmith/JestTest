@@ -44,3 +44,7 @@ it('negative numbers will throw an exception \'negatives not allowed\' and the n
     addStuffUp(1, -2, 3);
   }).toThrow('negatives not allowed -2');
 });
+
+it('should ignore a number greater than 1000, so 2 + 1002 = 2', () => {
+
+});
