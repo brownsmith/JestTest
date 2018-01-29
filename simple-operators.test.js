@@ -2,14 +2,11 @@ function addStuffUp(...args) {
 
   var argumentArray = [];
 
-  if (arguments) {
-    var myArgs2 = [
-      arguments[0] ? arguments[0] : 0,
-      arguments[1] ? arguments[1] : 0,
-      arguments[2] ? arguments[2] : 0
-    ];
-    argumentArray.push(...myArgs2);
-  }
+  argumentArray.push(
+    arguments[0] ? arguments[0] : 0,
+    arguments[1] ? arguments[1] : 0,
+    arguments[2] ? arguments[2] : 0
+  );
 
   var total = 0;
 
@@ -26,6 +23,11 @@ function addStuffUp(...args) {
 
   return total;
 };
+
+it('should return 0 if no argument passed in', () => {
+  const addStuffUpFunc = addStuffUp();
+  expect(addStuffUpFunc).toEqual(0);
+});
 
 it('should allow arguments', () => {
   const addStuffUpFunc = addStuffUp(123);
