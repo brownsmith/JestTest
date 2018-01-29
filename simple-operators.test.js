@@ -9,6 +9,9 @@ function addStuffUp(arg1, arg2, arg3) {
     if (num < 0) {
       throw 'negatives not allowed ' + num;
     }
+    if (num > 1000) {
+      num = 0;
+    }
     total += num;
   }
   return total;
