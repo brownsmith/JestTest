@@ -1,11 +1,20 @@
-function addStuffUp(arg1, arg2, arg3) {
-  if (arguments.length > 3) {
-    return false;
+function addStuffUp(...args) {
+
+  var argumentArray = [];
+
+  if (arguments) {
+    var myArgs2 = [
+      arguments[0] ? arguments[0] : 0,
+      arguments[1] ? arguments[1] : 0,
+      arguments[2] ? arguments[2] : 0
+    ];
+    argumentArray.push(...myArgs2);
   }
 
   var total = 0;
-  for (arg in arguments) {
-    num = parseFloat(arguments[arg]);
+
+  for (arg in argumentArray) {
+    num = parseFloat(argumentArray[arg]);
     if (num < 0) {
       throw 'negatives not allowed ' + num;
     }
@@ -14,6 +23,7 @@ function addStuffUp(arg1, arg2, arg3) {
     }
     total += num;
   }
+
   return total;
 };
 
@@ -34,12 +44,12 @@ it('should add the arguments together', () => {
 
 it('should be called with no more than 3 arguments', () => {
   const addStuffUpFunc = addStuffUp(1, 2, 3, 4);
-  expect(addStuffUpFunc).toEqual(false);
+  expect(addStuffUpFunc).toEqual(6);
 });
 
 it('should be able to handle an unknown number of numbers', () => {
   const addStuffUpFunc = addStuffUp(1, 2, 3, 5, 8, 13, 21);
-  expect(addStuffUpFunc).toEqual(false);
+  expect(addStuffUpFunc).toEqual(6);
 });
 
 it('negative numbers will throw an exception \'negatives not allowed\' and the negative that was passed' , () => {
