@@ -7,10 +7,7 @@ function addStuffUp(...args) {
 
   for (arg in argumentArray) {
     var num = parseFloat(argumentArray[arg]);
-    num = (!num || num > 1000) ? 0 : num;
-    if (num < 0) {
-      throw 'negatives not allowed ' + num;
-    }
+    num = (!num || num > 1000) ? 0 : num && (num < 0) ? (function(){throw 'negatives not allowed ' + num}()) : num;
     total += num;
   }
 
